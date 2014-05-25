@@ -1,0 +1,40 @@
+object Form1: TForm1
+  Left = 44
+  Top = 139
+  Width = 680
+  Height = 640
+  Caption = 'Form1'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MainMenu1: TMainMenu
+    Left = 24
+    Top = 8
+    object File1: TMenuItem
+      Caption = 'File'
+    end
+    object Edit1: TMenuItem
+      Caption = 'Edit'
+    end
+    object View1: TMenuItem
+      Caption = 'View'
+    end
+    object Image1: TMenuItem
+      Caption = 'Image'
+    end
+    object Colors1: TMenuItem
+      Caption = 'Colors'
+    end
+    object Help1: TMenuItem
+      Caption = 'Help'
+    end
+  end
+end

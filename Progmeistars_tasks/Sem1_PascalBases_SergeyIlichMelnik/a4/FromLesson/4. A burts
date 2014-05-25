@@ -1,0 +1,20 @@
+Program Poschitatj, skolko bukv a v zadannoj programme;
+
+Function cCount(s: string; ch: char): integer;
+
+
+ Begin
+
+ End;
+
+
+Var f: text;
+    res: string;
+
+
+Begin
+
+  While not EoF(f) Do Begin
+   Readln(f, line);
+   res:=res+cCount(line, 'a');
+  End;

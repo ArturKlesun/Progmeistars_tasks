@@ -1,0 +1,39 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Menus, ExtCtrls, StdCtrls, Buttons;
+
+type
+  TForm1 = class(TForm)
+    MainMenu1: TMainMenu;
+    File1: TMenuItem;
+    Edit1: TMenuItem;
+    View1: TMenuItem;
+    Image1: TMenuItem;
+    Colors1: TMenuItem;
+    Help1: TMenuItem;
+    Image2: TImage;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  BMcopy: TBitMap;
+
+implementation
+
+{$R *.DFM}
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+   BMCopy:=TBitmap.Create;
+end;
+
+end.
