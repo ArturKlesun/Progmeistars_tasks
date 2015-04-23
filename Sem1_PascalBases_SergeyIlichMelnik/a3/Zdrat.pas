@@ -1,4 +1,6 @@
-﻿Program drat;
+{Хи-хи, кажись не работает =D}
+
+Program drat;
 
 Procedure Print(n: LongInt; symb: char; var f: text; q: Longint; t: Longint);
           var e, z, c: integer;

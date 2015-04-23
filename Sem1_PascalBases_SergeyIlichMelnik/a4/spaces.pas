@@ -1,5 +1,6 @@
-﻿Program spaces;
+{Вырезает лишние пробелы и отступы из введённого файла}
 
+Program spaces;
 
 Var fil, fil2, fil3: String;
     i1, a, b: integer;

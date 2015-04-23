@@ -1,3 +1,6 @@
+{–ö–∞–∫ –≤ –ø–∞—Å–∫–∞–ª–µ —Å–æ–±–∏—Ä–∞—Ç—å —Å –≤–Ω–µ—à–Ω–∏–º–∏ –ª–∏–±–∞–º–∏?
+}
+
 Program X_ki_O_liki;
 Uses Crt,uSup,dos;
 Const kUp   = chr(72);  kDown   = chr(80);
@@ -104,7 +107,7 @@ Begin
     qx[iy]:=0;
     qy[iy]:=0;
     str(iy,sy);
-    if pos(' '+sx+' '+sy+' ',sline)<>0 then qy[iy]:=(pos(' '+sx+' '+sy+' ',sline) mod 2)+1; {Ö·´® 1, ß≠†Á®‚ Â, ®≠†Á• - 0}
+    if pos(' '+sx+' '+sy+' ',sline)<>0 then qy[iy]:=(pos(' '+sx+' '+sy+' ',sline) mod 2)+1; {–ï—Å–ª–∏ 1, –∑–Ω–∞—á–∏—Ç —Ö, –∏–Ω–∞—á–µ - 0}
     if pos(' '+sy+' '+sx+' ',sline)<>0 then qx[iy]:=(pos(' '+sy+' '+sx+' ',sline) mod 2)+1;
     if ix=iy then if pos(' '+sy+' '+sx+' ',sline)<>0  then qz1[iy]:=(pos(' '+sy+' '+sx+' ',sline) mod 2)+1;
     if 4-ix=iy then if pos(' '+sy+' '+sx+' ',sline)<>0  then qz2[iy]:=(pos(' '+sy+' '+sx+' ',sline) mod 2)+1;
@@ -134,18 +137,18 @@ Var i1: longint;
 Begin
   bre:=0;
 
-  Writeln('ù‚Æ ®£‡† ™‡•·‚®™® ≠Æ´®™®. èÆ¶†´„©·‚†, ¢Î°•‡®‚• ÆØØÆ≠•≠‚†:');
-  Writeln('1 - Á•´Æ¢•™');
-  Writeln('2 - ™Æ¨ØÏÓ‚•‡-Æ°•ßÏÔ≠™†');
-  {Writeln('3 - ™Æ¨ØÏÓ‚•‡-·‡•§≠®©');
-  Writeln('4 - ≠®Á•©≠†Ô ·¨•‡‚Ï');}
+  Writeln('–≠—Ç–æ –∏–≥—Ä–∞ –∫—Ä–µ—Å—Ç–∏–∫–∏ –Ω–æ–ª–∏–∫–∏. –ü–æ–∂–∞–ª—É–π—Å—Ç–∞, –≤—ã–±–µ—Ä–∏—Ç–µ –æ–ø–ø–æ–Ω–µ–Ω—Ç–∞:');
+  Writeln('1 - —á–µ–ª–æ–≤–µ–∫');
+  Writeln('2 - –∫–æ–º–ø—å—é—Ç–µ—Ä-–æ–±–µ–∑—å—è–Ω–∫–∞');
+  {Writeln('3 - –∫–æ–º–ø—å—é—Ç–µ—Ä-—Å—Ä–µ–¥–Ω–∏–π');
+  Writeln('4 - –Ω–∏—á–µ–π–Ω–∞—è —Å–º–µ—Ä—Ç—å');}
   Repeat
    Readln(game_type);
   Until (game_type>0) and (game_type<3);
   If game_type>1 then begin
-   {Writeln('ÇÎ°•‡®‚•, ™†™Æ© ·‚Æ‡Æ≠Æ© °„§•‚• ®£‡†‚Ï, ØÆ¶†´„©·‚†:');
-   Writeln('1 - ™‡•·‚®™†¨®');
-   Writeln('2 - ≠Æ´®™†¨®');
+   {Writeln('–í—ã–±–µ—Ä–∏—Ç–µ, –∫–∞–∫–æ–π —Å—Ç–æ—Ä–æ–Ω–æ–π –±—É–¥–µ—Ç–µ –∏–≥—Ä–∞—Ç—å, –ø–æ–∂–∞–ª—É–π—Å—Ç–∞:');
+   Writeln('1 - –∫—Ä–µ—Å—Ç–∏–∫–∞–º–∏');
+   Writeln('2 - –Ω–æ–ª–∏–∫–∞–º–∏');
    Repeat
     Readln(Side);
    Until (side>0) and (side<3); }
@@ -168,7 +171,7 @@ Begin
   GoToXY(1,2);
   write(' ');
   GoToXY(8,8);
-  Write('ë‚‡•´™†¨® ¢Î°®‡†©‚•, ™„§† ØÆ·‚†¢®‚Ï ™‡•·‚®™, Ø‡Æ°•´ - ØÆ·‚†¢®‚Ï, Esc - ¢ÎÂÆ§.');
+  Write('–°—Ç—Ä–µ–ª–∫–∞–º–∏ –≤—ã–±–∏—Ä–∞–π—Ç–µ, –∫—É–¥–∞ –ø–æ—Å—Ç–∞–≤–∏—Ç—å –∫—Ä–µ—Å—Ç–∏–∫, –ø—Ä–æ–±–µ–ª - –ø–æ—Å—Ç–∞–≤–∏—Ç—å, Esc - –≤—ã—Ö–æ–¥.');
   GoToXY(1,2);
   textBackground(lightblue);
   turn_s:='X';
@@ -190,7 +193,7 @@ Begin
   Usloviya_Pobedi;
    if (length(sline)=45) and (wherex<4) then begin
    GoToXY(7,2);
-   write('ç®ÁÏÔ.');
+   write('–ù–∏—á—å—è.');
   end;
   Until 1=0;
   a:=0;
@@ -223,7 +226,7 @@ Begin
     Usloviya_Pobedi;
    if (length(sline)=45) and (wherex<4) then begin
    GoToXY(7,2);
-   write('ç®ÁÏÔ.');
+   write('–ù–∏—á—å—è.');
    Case ReadKey of
       escape: bre:=1;
      end;
@@ -244,7 +247,7 @@ Begin
   Usloviya_Pobedi;
    if (length(sline)=45) and (wherex<4) then begin
    GoToXY(7,2);
-   write('ç®ÁÏÔ.');
+   write('–ù–∏—á—å—è.');
    end;
    end;
   Until 1=0;

@@ -1,4 +1,7 @@
-﻿{  1.}  Program LifeGame;
+﻿{Программа не моя я просто залил её на гитхаб}
+{author: Sergey Ilyich Melnik}
+
+{  1.}  Program LifeGame;
 {  2.}  Uses CRT;
 {  3.}  
 {  4.}  Const Height = 20;  Width  = 60;  // размеры игрового поля

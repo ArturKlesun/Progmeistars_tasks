@@ -1,4 +1,4 @@
-﻿Program chess;
+Program chess;
 
 Procedure Print(h: LongInt; a: Longint; h2: Longint; a2: LongInt; symb: char; symb2: char; var f: text);
           var e, c, t, k, v, kr: integer;

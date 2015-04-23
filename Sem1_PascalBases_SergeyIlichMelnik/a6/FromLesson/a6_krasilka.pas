@@ -1,3 +1,5 @@
+{котики-наркотики}
+
 Program krasilka;
 Uses Crt;
 Const Up = chr(72);

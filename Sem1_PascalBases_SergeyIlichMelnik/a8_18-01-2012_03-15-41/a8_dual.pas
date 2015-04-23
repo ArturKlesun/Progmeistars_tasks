@@ -1,3 +1,5 @@
+{Под линуксами не запустится}
+
 Program dual;
 Uses CRT, U_commands;
 Const wa=42;

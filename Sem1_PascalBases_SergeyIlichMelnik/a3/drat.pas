@@ -1,4 +1,4 @@
-﻿Program drat;
+Program drat;
 
 Procedure Print(n: LongInt; symb: char; var f: text; q: integer; z: integer);
           var e, c: integer;

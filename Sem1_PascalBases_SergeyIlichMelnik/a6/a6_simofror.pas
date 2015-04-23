@@ -1,3 +1,5 @@
+{Графика-хуяфика!}
+
 Program Simofor;
 Uses CRT;
 

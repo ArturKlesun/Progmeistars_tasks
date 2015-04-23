@@ -5,9 +5,9 @@ Program sload;
 var i1, i2, a, b: integer;
     load, ad, rez: string;
 begin
-  Writeln('âªã¤  áç¨âë¢ âì:');
+  Writeln('Откуда считывать:');
   Readln(load);
-  Writeln('â® áç¨âë¢ âì:');
+  Writeln('Что считывать:');
   Readln(ad);
   a:=0;
   b:=0;
@@ -21,9 +21,9 @@ begin
     if b=0 then b:=length(load)-i1+1+length(ad)-1;
    end;
   end;
-  Writeln('¥§ã«ìâ â:');
-  Writeln('  ª ª®¬ á¨¬¢®«¥ ­ ç¨­ ¥âáï á®®â¢¥âáâ¢¨¥:');
+  Writeln('Результат:');
+  Writeln('На каком символе начинается соответствие:');
   Writeln(b);
-  Writeln('ª®«ìª® á®®â¢¥âáâ¢¨©:');
+  Writeln('Сколько соответствий:');
   Writeln(a);
 end.

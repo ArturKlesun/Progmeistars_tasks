@@ -12,16 +12,16 @@ Var a: array[1..MaxSize] of integer;
     sred: real;
     sim, sin, ku, v: integer;
     does: integer;
-Begin  {âáî¤ }
+Begin  {Отсюда}
   Writeln;
-  write('à®£à ¬¬  ¤¥« ¥â ®ç¥­ì ¬­®£® ç¥£® ¨­â¥à¥á­®£® á «¨­¥©ª®© ç¨á¥«. ¢¥¤¨â¥, áª®«ìª® ¨å, ¯®¦ «ã©áâ : ');
+  write('Программа делает очень много чего интересного с линейкой чисел. Введите, сколько их, пожалуйст : ');
   readln(n);
   for i:=1 to n do begin
-   write('¢¥¤¨â¥ ', (i), '-¥ ç¨á«®, ¯®¦ «ã©áâ :');
+   write('Введите ', (i), '-е число, пожалуйста:');
    Readln(a[i]);
-  end;   {®ª  ¢áñ ¯à ¢¨«ì­®}
+  end;   {Пока всё правильно}
 
-{ ªá. ç¨á«o}
+{Макс. числo}
   smax:=0;
   smti:=1;
   For i:=1 to n do begin
@@ -31,24 +31,24 @@ Begin  {âáî¤ }
     end;
    end;
   writeln;
-  writeln(' ¬®¥ ¡®«ìè®¥ ç¨á«® ¢ «¨­¥©ª¥: ', smax);
+  writeln('Самое большое число в линейке: ', smax);
 
-{ª®«ìª® ¨å}
+{Сколько их}
   o:=0;
   For i:=1 to n do
    if a[i] = smax then o:=o+1;
   writeln;
-  writeln(' ¯à®£à¥áá¨¨ ', o, ' â ª¨å ç¨á¥«.');
+  writeln('В прогрессии ', o, ' таких чисел.');
 
-{à¥¤­¥¥  à¨ä¬¥â¨ç¥áª®¥}
+{Среднее арифметическое}
   sred:=0;
   for s:=1 to n do sred:=sred+a[s];
   sred:=sred/n;
   writeln;
-  writeln('à¥¤­¥¥  à¨ä¬¥â¨ç¥áª®¥:', sred:8:4);
+  writeln('Среднее арифметическое:', sred:8:4);
 
 
-{¨¬¬¥âà¨ç¥­ «¨?}
+{Симметричен ли?}
   v:=0;
   sin:=n div 2;
   if n mod 2 = 0 then sim:=n div 2 +1 else begin sim:=n div 2 +2;
@@ -60,16 +60,16 @@ Begin  {âáî¤ }
    sim:=sim+1;
   end;
   writeln;
-  if n = v then writeln('à®£à¥áá¨ï á¨¬¬¥âà¨ç­ ') else writeln('à®£à¥áá¨ï ­¥ á¨¬¬¥âà¨ç­ ');
+  if n = v then writeln('Прогрессия симметрична') else writeln('Прогрессия не симметрична');
   writeln;
 
-{ª®«ìª® çñâ­ëå ç¨á¥«}
+{Сколько чётных чисел}
   cet:=0;
   for t:=1 to n do
    if a[t] mod 2 = 0 then cet:=cet+1;
-  writeln(' ¯à®£à¥áá¨¨ ', cet, ' çñâ­ëå ç¨á¥«(-« )');
+  writeln('В прогрессии ', cet, 'чётных чисел(-ла)');
 
-{¢  ­ ¨¡®«ìè¨å}
+{Два наибольших}
   Sminmax:=-1000;
   Sminmax2:=-1000;
   For e:=1 to n do begin
@@ -83,9 +83,9 @@ Begin  {âáî¤ }
 
 
   end;
-  if sminmax2 <> -1000 then  writeln('§ ­¨å ¤¢  ­ ¨¡®«ìè¨å ç¨á« : ', sminmax, ' ¨ ', sminmax2) else writeln(' «¨­¥©ª¥ ¬¥­ìè¥ ¤¢ãå çñâ­ëå ç¨á¥«.');
+  if sminmax2 <> -1000 then  writeln('Из них два наибольших числа: ', sminmax, 'и ', sminmax2) else writeln('В линейке меньше двух чётных чисел.');
 
-{áâì «¨ ¯®¢â®à¥­¨ï}
+{Есть ли повторения}
   o:=0;
   writeln;
   for i:=1 to n do begin
@@ -93,6 +93,6 @@ Begin  {âáî¤ }
      if a[g]=a[i] then o:=o+1;
     end;
   end;
-  if o = n then writeln('®¢â®à®¢ ­¥â') else writeln('®¢â®àë ¥áâì');
+  if o = n then writeln('Повторов нет') else writeln('Повторы есть');
 
 End.

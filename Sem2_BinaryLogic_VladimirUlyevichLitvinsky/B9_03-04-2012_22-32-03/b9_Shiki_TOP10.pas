@@ -1,4 +1,5 @@
 {Пятнашки}
+{Даже работает}
 Program shiki;
 Uses CRT;
 var x: array [1..4, 1..4] of integer;

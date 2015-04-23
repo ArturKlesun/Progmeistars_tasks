@@ -1,4 +1,4 @@
-﻿Program diagonal;
+Program diagonal;
 
 Procedure Print(h: LongInt; symb: char; var f: text);
           var e, c, t, k: integer;

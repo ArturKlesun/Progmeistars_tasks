@@ -1,3 +1,4 @@
+{Задание: нарисовать в консоли ёлочку звёздочками}
 Program chree;
 
 Procedure Print(n: LongInt; symb: char; var f: text);

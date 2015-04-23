@@ -1,6 +1,7 @@
+{А вот хуй не работает}
+
 Program c4eti;
 Uses CRT;
-
 
 Var place: array[1..20] of string;
     nx, i, i2, err: integer;
@@ -9,11 +10,11 @@ Var place: array[1..20] of string;
     placint: array[1..20] of integer;
 
 Begin
-{����� 䠩��}
+{Задал файлы}
   Assign(fr, 'numbers.dat');
   Assign(fw, 'diagramma.dat');
   Reset(fr);
-{����᫨ � ���ᨢ �᫠}
+{Занесли в массив числа}
   nx:=0;
   While not EoF(fr) do begin
    nx:=nx+1;

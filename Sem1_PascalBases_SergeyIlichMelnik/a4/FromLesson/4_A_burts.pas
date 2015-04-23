@@ -1,3 +1,5 @@
+{Памятник вещам, которые никогда не будут доде}
+
 Program Poschitatj_skolko_bukv_a_v_zadannoj_programme;
 
 Function cCount(s: string; ch: char): integer;

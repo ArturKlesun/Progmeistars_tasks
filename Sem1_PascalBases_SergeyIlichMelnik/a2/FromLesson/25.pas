@@ -1,4 +1,7 @@
-﻿{  1.}  Program BEGUNOK;
+﻿{Программа не моя я просто залил её на гитхаб}
+{author: Sergey Ilyich Melnik}
+
+{  1.}  Program BEGUNOK;
 {  2.}  Uses Crt;
 {  3.}  
 {  4.}  Const Up    = Chr(72);      Down  = Chr(80);

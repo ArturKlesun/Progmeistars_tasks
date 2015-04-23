@@ -1,4 +1,6 @@
-﻿Program azby;
+{Невхуйебу}
+
+Program azby;
 Var sb, se: String;
     i1: integer;
     z: string;
