@@ -1,9 +1,9 @@
-Program azby;
+я╗┐Program azby;
 Var sb, se: String;
     i1: integer;
     z: string;
 Begin
-  Write('Напишите, пожалуйста, рандомный текст, и я сделаю его ещё более рандомным: ');
+  Write('╨Э╨░╨┐╨╕╤И╨╕╤В╨╡, ╨┐╨╛╨╢╨░╨╗╤Г╨╣╤Б╤В╨░, ╤А╨░╨╜╨┤╨╛╨╝╨╜╤Л╨╣ ╤В╨╡╨║╤Б╤В, ╨╕ ╤П ╤Б╨┤╨╡╨╗╨░╤О ╨╡╨│╨╛ ╨╡╤Й╤С ╨▒╨╛╨╗╨╡╨╡ ╤А╨░╨╜╨┤╨╛╨╝╨╜╤Л╨╝: ');
   writeln;
   Readln(sb);
   For i1:=1 to length(sb) div 2 do begin

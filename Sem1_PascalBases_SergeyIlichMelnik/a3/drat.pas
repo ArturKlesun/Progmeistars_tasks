@@ -1,4 +1,4 @@
-Program drat;
+я╗┐Program drat;
 
 Procedure Print(n: LongInt; symb: char; var f: text; q: integer; z: integer);
           var e, c: integer;
@@ -31,9 +31,9 @@ var h, a, i, g, v, q, z: integer;
 
 Begin
   Assign(f, 'chree.dat');
-  Writeln('Введите высоту прямоугольника, пожалуйста:');
+  Writeln('╨Т╨▓╨╡╨┤╨╕╤В╨╡ ╨▓╤Л╤Б╨╛╤В╤Г ╨┐╤А╤П╨╝╨╛╤Г╨│╨╛╨╗╤М╨╜╨╕╨║╨░, ╨┐╨╛╨╢╨░╨╗╤Г╨╣╤Б╤В╨░:');
   Readln(h);
-  Writeln('Введите ширину прямоугольника, пожалуйста:');
+  Writeln('╨Т╨▓╨╡╨┤╨╕╤В╨╡ ╤И╨╕╤А╨╕╨╜╤Г ╨┐╤А╤П╨╝╨╛╤Г╨│╨╛╨╗╤М╨╜╨╕╨║╨░, ╨┐╨╛╨╢╨░╨╗╤Г╨╣╤Б╤В╨░:');
   Readln(a);
   q:=h;
   z:=1;

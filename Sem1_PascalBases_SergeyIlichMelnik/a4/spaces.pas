@@ -1,4 +1,4 @@
-Program spaces;
+ÔªøProgram spaces;
 
 
 Var fil, fil2, fil3: String;
@@ -7,7 +7,7 @@ Var fil, fil2, fil3: String;
     m, n1: longint;
 Begin
   Writeln;
-  Write('Ç¢•§®‚• ≠†ß¢†≠®• ‰†©´†, · ™Æ‚Æ‡Æ£Æ ØÆ©§Ò‚ ·Á®‚Î¢†≠®• Ø‡Æ°•´Æ¢ (· ‡†·Ë®‡•≠®•¨), ØÆ¶†´„©·‚†:');
+  Write('–í–≤–µ–¥–∏—Ç–µ –Ω–∞–∑–≤–∞–Ω–∏–µ —Ñ–∞–π–ª–∞, —Å –∫–æ—Ç–æ—Ä–æ–≥–æ –ø–æ–π–¥—ë—Ç —Å—á–∏—Ç—ã–≤–∞–Ω–∏–µ –ø—Ä–æ–±–µ–ª–æ–≤ (—Å —Ä–∞—Å—à–∏—Ä–µ–Ω–∏–µ–º), –ø–æ–∂–∞–ª—É–π—Å—Ç–∞:');
   Writeln;
   Readln(fil);
   Assign(f1, fil);
@@ -19,7 +19,7 @@ Begin
   While not EoF(f1) do begin
    Readln(f1, fil);
 
-   {ÇÎ‡•ß†≠®• ´®Ë≠®Â Ø‡Æ°•´Æ¢}
+   {–í—ã—Ä–µ–∑–∞–Ω–∏–µ –ª–∏—à–Ω–∏—Ö –ø—Ä–æ–±–µ–ª–æ–≤}
    For n1:=1 to length(fil) do begin
     fil2:=copy(fil, 1, 1);
     if fil2=' ' then delete(fil, 1, 1);

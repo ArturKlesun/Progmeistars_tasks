@@ -1,4 +1,4 @@
-Program chess;
+я╗┐Program chess;
 
 Procedure Print(h: LongInt; a: Longint; h2: Longint; a2: LongInt; symb: char; symb2: char; var f: text);
           var e, c, t, k, v, kr: integer;
@@ -41,13 +41,13 @@ var h, h2, a, a2: integer;
 
 Begin
   Assign(f, 'chess.dat');
-  Writeln('Введите длинну поля (в клетках), пожалуйста:');
+  Writeln('╨Т╨▓╨╡╨┤╨╕╤В╨╡ ╨┤╨╗╨╕╨╜╨╜╤Г ╨┐╨╛╨╗╤П (╨▓ ╨║╨╗╨╡╤В╨║╨░╤Е), ╨┐╨╛╨╢╨░╨╗╤Г╨╣╤Б╤В╨░:');
   Readln(h);
-  Writeln('Введите ширину поля (в клетках), пожалуйста:');
+  Writeln('╨Т╨▓╨╡╨┤╨╕╤В╨╡ ╤И╨╕╤А╨╕╨╜╤Г ╨┐╨╛╨╗╤П (╨▓ ╨║╨╗╨╡╤В╨║╨░╤Е), ╨┐╨╛╨╢╨░╨╗╤Г╨╣╤Б╤В╨░:');
   Readln(a);
-  Writeln('Введите длинну клетки, пожалуйста:');
+  Writeln('╨Т╨▓╨╡╨┤╨╕╤В╨╡ ╨┤╨╗╨╕╨╜╨╜╤Г ╨║╨╗╨╡╤В╨║╨╕, ╨┐╨╛╨╢╨░╨╗╤Г╨╣╤Б╤В╨░:');
   Readln(h2);
-  Writeln('Введите ширину клетки, пожалуйста:');
+  Writeln('╨Т╨▓╨╡╨┤╨╕╤В╨╡ ╤И╨╕╤А╨╕╨╜╤Г ╨║╨╗╨╡╤В╨║╨╕, ╨┐╨╛╨╢╨░╨╗╤Г╨╣╤Б╤В╨░:');
   Readln(a2);
   Rewrite (f);
   Print(h, a, h2, a2, '-', '+', f);

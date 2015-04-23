@@ -1,4 +1,4 @@
-Program diagonal;
+ÔªøProgram diagonal;
 
 Procedure Print(h: LongInt; symb: char; var f: text);
           var e, c, t, k: integer;
@@ -30,7 +30,7 @@ var h, a, i, g, v, q, z: integer;
 
 Begin
   Assign(f, 'diagonal.dat');
-  Writeln('Ç¢•§®‚• ¢Î·Æ‚„ Ø‡Ô¨Æ„£Æ´Ï≠®™†, ØÆ¶†´„©·‚†:');
+  Writeln('–í–≤–µ–¥–∏—Ç–µ –≤—ã—Å–æ—Ç—É –ø—Ä—è–º–æ—É–≥–æ–ª—å–Ω–∏–∫–∞, –ø–æ–∂–∞–ª—É–π—Å—Ç–∞:');
   Readln(h);
   Rewrite (f);
   Print(h, '*', f);
