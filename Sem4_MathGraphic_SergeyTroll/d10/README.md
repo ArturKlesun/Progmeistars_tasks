@@ -1,0 +1,1 @@
+Finds the square root of entered number using binary search

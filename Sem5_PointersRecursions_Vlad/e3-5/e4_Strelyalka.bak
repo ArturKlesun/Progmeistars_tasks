@@ -60,6 +60,6 @@ Begin
                  write('X');
                  readkey;
 	 End;
-         Gotoxy(5,1);
+         Gotoxy(5,0);
          Write('Последним останется номер: ',Ring^.data);
 End.
