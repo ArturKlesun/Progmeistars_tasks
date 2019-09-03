@@ -2,14 +2,21 @@
 // Путь к файлу для сжатия передаётся параметром функции main()
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdint.h>
 #include <string.h>
 #include <limits.h>
+#include <inttypes.h>
 
 typedef struct telement *pelement;
+/** I would guess this is a Huffman Tree node */
 struct telement{
 	pelement left;
 	pelement right;
 	int value;
+	/**
+	 * I think this is a substring that
+	 * follows the letter this node is keyed by
+	 */
 	char bitpath[258];
 } telement_default = {NULL, NULL, INT_MIN, {""}};
 
@@ -20,13 +27,13 @@ void printtree(pelement p, int n);
 void otsortirovatj(pelement a[], unsigned len);
 void mkbound(pelement otmasuk[], pelement where);
 int compar(const void * a, const void * b);
-int doklsn(FILE* vvod, void* viska, struct telement* skoki);
-
-
-
+int compress_using(FILE* vvod, void* viska, struct telement* skoki);
 
 int main(char argc, char* argv[]){
-	if (argc<2) {printf("Вы не правы!\n"); return(66);}
+	if (argc<2) {
+		printf("Please, specify input text file path as first argument!\n");
+		return(66);
+	}
 	int start_count = 256;	
 	struct telement *skoka = malloc(sizeof(struct telement) * (start_count*2-1));
 	for (int i = 0; i < start_count*2-1; i++) skoka[i] = telement_default;
@@ -65,7 +72,7 @@ int main(char argc, char* argv[]){
 	
 	fr = fopen(argv[1], "rb");	
 	
-	doklsn(fr, viska, skoka);
+	compress_using(fr, viska, skoka);
 	return 0;
 }
 
@@ -132,6 +139,7 @@ void mkbound(pelement otmasuk[], pelement where){
 	s1tos2s1(where->left->bitpath, "0");
 	otmasuk++;
 	where->right = otmasuk[0];
+	// seems to be some kind of stop character, possibly a substring delimiter
 	s1tos2s1(where->right->bitpath, "1");
 	where->value = where->left->value + where->right->value;
 	pelement* sp = otmasuk;
@@ -158,18 +166,22 @@ int compar(const void * a, const void * b){ // a,b - указатель на у�
 	else return 0;
 }
 
-int doklsn(FILE* vvod, void* viska, struct telement* skoki){
+/**
+ * @param file_to_compress - the input file with text to be compressed
+ * @param skoki - I think this is the substring dictionary keyed by character byte code
+ */
+int compress_using(FILE* file_to_compress, void* viska, struct telement* skoki){
 	FILE* fw = fopen("compressed.klsn", "wb");
 	unsigned char sb = 0; unsigned char c = 0;
-	char* s;	
-	unsigned long int bcount = 0;
-	for ( int b = getc(vvod);  b != EOF;  b = getc(vvod) ){
-		s = skoki[b].bitpath;
+    uint64_t compressed_size = 0;
+	for ( int ch = getc(file_to_compress);  ch != EOF;  ch = getc(file_to_compress) ){
+        char* s = skoki[ch].bitpath;
 		while (*s) {
 			if (*s == '1') sb += 128>>c;
 			c++;
 			if (c == 8) {
 				putc(sb, fw);
+				++compressed_size;
 				c = 0;
 				sb = 0;
 			}
@@ -178,8 +190,9 @@ int doklsn(FILE* vvod, void* viska, struct telement* skoki){
 	}
 	putc(sb, fw);
 	putc(c, fw);
-	fclose(fw);	fclose(vvod);
-	printf("Кодирование завершено!\n");
+	fclose(fw);	fclose(file_to_compress);
+	printf("Compression result in compressed.klsn!\n");
+	printf("Compressed size: %" PRIu64 "\n", compressed_size);
 	int l;
 	
 	for (int i=0; i<256; i++){
