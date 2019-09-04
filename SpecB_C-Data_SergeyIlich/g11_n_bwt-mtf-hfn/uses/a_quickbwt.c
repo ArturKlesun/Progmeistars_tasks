@@ -86,7 +86,8 @@ void outputandfree(byte* otmasuk[], FILE* fw){
 		putc(*dec(otmasuk[i]), fw);
 		bytes_written++;
 	}
-	// finishing the file with the length of data
+	// finishing the file with the position of the first original
+	// character - the only additional data needed to decode BWT
 	for (i=0; i<4; i++){
 		putc( (byte)(n>>24) ,fw );
 		n<<=8;

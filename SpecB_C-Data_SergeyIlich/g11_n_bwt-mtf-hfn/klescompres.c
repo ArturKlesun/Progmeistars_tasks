@@ -33,7 +33,7 @@ int main(char argc, char* argv[]){
 
 	// now apply the Move-To-Front encoding which benefits from BWT, as it's
 	// purpose is to store each character as an ASCII offset from previous character
-	// since BWT usually results in strings like "AAACCCCBBBBB", MTW
+	// since BWT usually results in strings like "AAACCCCBBBBB", MTF
 	// will look like 000200010000 (a lot of small bit values)
 	system("gcc ./uses/b_klesmtf.c && ./a.out output.bwt");
 	system("rm output.bwt");

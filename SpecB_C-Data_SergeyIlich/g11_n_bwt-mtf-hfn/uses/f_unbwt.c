@@ -53,25 +53,27 @@ int main(char argc, char* argv[]){
 	FILE* fr = fopen(argv[1], "rb");
 	byte_count = 0;
 	usg heapsize = 4096;
-	byte* heap = malloc(heapsize);
+	byte* input_bytes = malloc(heapsize);
 	int b;
 	while ( (b=getc(fr)) != EOF) {
 		if (byte_count == heapsize) {
 			heapsize *= 2;
-			heap = realloc(heap, heapsize);
+			input_bytes = realloc(input_bytes, heapsize);
 		}
-		heap[byte_count] = b;
+		input_bytes[byte_count] = b;
 		byte_count++;
 	}
-	byte* p = heap+byte_count - 1;
+	byte* p = input_bytes+byte_count - 1;
 	usg koef = 1;
-	usg n=0;
+	usg first_char_pos = 0;
+	// last four bytes of the BWT-encoded file
+	// are the original first character position
 	for (i = 0; i<4; koef*=256, i++, p--){
-		n += koef * (*p); 
+		first_char_pos += koef * (*p);
 	} 
 	byte_count-=4;
-	heap = realloc(heap, byte_count);
-	end_col = heap;
+	input_bytes = realloc(input_bytes, byte_count);
+	end_col = input_bytes;
 	byte** otmasuk = malloc(byte_count*sizeof(byte*));
 	for (i=0; i<byte_count; i++){
 		otmasuk[i] = end_col+i;
@@ -84,15 +86,14 @@ int main(char argc, char* argv[]){
 	}
 	
 	byte* orig_row = malloc(byte_count);
-	orig_row[0] = beg_col[n];
-	orig_row[byte_count-1] = end_col[n];
+	orig_row[0] = beg_col[first_char_pos];
+	orig_row[byte_count-1] = end_col[first_char_pos];
 	
-	usg place = n;
+	usg place = first_char_pos;
 	usg splo6nyak;
 	byte curb = beg_col[place];
 	
 	for (i = 1; i<byte_count-1; i++) {
-		//if (i % 1000 == 0) printf("%u\n", i);
 		splo6nyak = 0;
 		p = beg_col+place;
 		splo6nyak = p - (beg_col + na4ali[curb]);
