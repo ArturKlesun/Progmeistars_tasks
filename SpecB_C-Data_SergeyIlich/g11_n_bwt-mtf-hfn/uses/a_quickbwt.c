@@ -32,6 +32,12 @@ int comp (const void* va,const void* vb){
 	return *a - *b;
 }
 
+/**
+ * Burrows–Wheeler transform
+ *
+ * Despite the file name, it's actually awfully slow BWT implementation... I would guess
+ * that "quick" part means that it uses built-in qsort() function instead of bucket sort
+ */
 int main(char argc, char* argv[]){
 	if (argc != 2) {printf("Извините, но вы неправы\n"); return 66;}
 	byte* heap = malloc(1024*8 * sizeof(byte));
