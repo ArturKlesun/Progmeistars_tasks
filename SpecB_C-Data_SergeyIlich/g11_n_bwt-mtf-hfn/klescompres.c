@@ -4,7 +4,7 @@
 
 /**
  * this, ladies and gentlemen, despite yoptascriptish variable
- * naming, is a self-sufficient data compressor comparable to gzip
+ * naming, is a self-sufficient data compressor comparable to gzip (still inferior, though)
  *
  * for https://code.jquery.com/jquery-3.4.1.js
  * it gives such compression rate: 4,10607621
@@ -20,8 +20,7 @@ int main(char argc, char* argv[]){
 
 	// first apply Burrows–Wheeler transform to the file contents
 	// it's a neat algorithm that re-arranges bytes in such way that
-	// most repeating sequences are placed next to each
-	// other - such structure compresses very well
+	// most repeating sequences are placed next to each other
 	char command[256] = "gcc ./uses/a_quickbwt.c && ./a.out ";
 	char* p;
 	p = strcat(command, argv[1]);
@@ -31,11 +30,15 @@ int main(char argc, char* argv[]){
 		return 33;
 	}
 	printf("Перевели файл в BWT\n");
-	
+
+	// now apply the Move-To-Front encoding which benefits from BWT, as it's
+	// purpose is to store each character as an ASCII offset from previous character
+	// since BWT usually results in strings like "AAACCCCBBBBB", MTW
+	// will look like 000200010000 (a lot of small bit values)
 	system("gcc ./uses/b_klesmtf.c && ./a.out output.bwt");
 	system("rm output.bwt");
 	printf("Перевели файл в MTF\n");
-	
+
 	system("gcc ./uses/c_hufcompress.c -std=c99 && ./a.out output.mtf");
 	system("rm output.mtf");
 	printf("Сжали файл\n");	
