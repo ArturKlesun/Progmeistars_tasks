@@ -8,12 +8,7 @@
 #define cyan  "\033[1;36m"        /* 1 -> bold ;  36 -> cyan */
 #define green "\033[1;32m"        /* 4 -> underline ;  32 -> green */
 #define blue  "\033[9;34m"        /* 9 -> strike ;  34 -> blue */
- 
-#define black  "\033[0;30m"
-#define brown  "\033[0;33m"
-#define magenta  "\033[0;35m"
-#define gray  "\033[0;37m"
- 
+
 #define none   "\033[0m"        /* to flush the previous property */
 struct tbuf{
 	unsigned char byte;
@@ -28,8 +23,8 @@ struct telement{
 	pelement left;
 	pelement right;
 	int value;
-	char pravoli;
-	int etotchar;
+	char is_right;
+	int character;
 } telement_default = {NULL, NULL, NULL, 0, 0, INT_MAX};
 
 
@@ -38,9 +33,9 @@ void mkbound(pelement otmasuk[], pelement where, int* len);
 int compar(const void * a,const void * b);
 void buff_add(buf_t* buf,char bo, FILE* f);  
 int getcols();
-void heapSort(pelement items[], int array_size);
+void heap_sort(pelement *items, int array_size);
 void heapify(pelement items[], int array_size);
-void shiftDown(pelement items[], int shifting, int last);
+void shift_down(pelement *items, int shifting, int last);
 void somesort(pelement otmasuk[], int len);
 
 int compar(const void* a,const void* b){	
@@ -102,17 +97,8 @@ void mkbounds(pelement otmasuk[], struct telement skoka[]){
 	
 	for (int i=0; i<256; i++) otmasuk[i] = skoka+i;
 }
-/*
-void mkbound(pelement otmasuk[], pelement where, int* len){
-	otmasuk[0]->parent = where;  where->left = otmasuk[0];
-	otmasuk++;
-	(*len)--;
-	otmasuk[0]->parent = where;  where->right = otmasuk[0];
-	where->value = where->left->value + where->right->value;
-	otmasuk[0] = where;
-	somesort(otmasuk, *len);
-}
-*/
+
+
 void printtree(pelement viska, pelement cur){
 	printf("%sНаше дерево Хаффмана%s\n", cyan, none);
 	int wid = getcols();
@@ -144,7 +130,7 @@ void printtree(pelement viska, pelement cur){
 	printf("%sГотово%s\n", green, none);
 }
 
-void heapSort(/*int*/pelement items[], int array_size)
+void heap_sort(/*int*/pelement *items, int array_size)
 {
 
   heapify (items, array_size);
@@ -154,25 +140,25 @@ void heapSort(/*int*/pelement items[], int array_size)
     items[0] = items[1];
     items[1] = items[i];
     items[i] = items[0];
-    shiftDown(items, 1, i-1);
+	  shift_down(items, 1, i - 1);
   }
 }
 
 
 void somesort(pelement otmasuk[],int start_count){
-	heapSort(otmasuk-1,start_count+1);
+	heap_sort(otmasuk - 1, start_count + 1);
 	//qsort(otmasuk, start_count, sizeof(pelement), compar);
 }
 
 void heapify(/*int*/pelement items[], int array_size) {
     int i;
     for (i = (array_size/2); i >= 1; i--) {
-        shiftDown(items, i, array_size);
+		shift_down(items, i, array_size);
     }
 }
 
 
-void shiftDown(/*int*/pelement items[], int shifting, int last)
+void shift_down(/*int*/pelement *items, int shifting, int last)
 {
     unsigned int maxChild = 2*shifting;
     items[0] = items[shifting];

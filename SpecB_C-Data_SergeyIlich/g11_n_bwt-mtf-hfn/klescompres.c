@@ -16,7 +16,7 @@
  */
 int main(char argc, char* argv[]){
 	if (argc < 2) {printf("Извините, но вы неправы. Введите путь к файлу параметром\n"); return 66;}
-	printf("Сейчас сожму файл\n");
+	printf("Starting compression\n");
 
 	// first apply Burrows–Wheeler transform to the file contents
 	// it's a neat algorithm that re-arranges bytes in such way that
@@ -37,7 +37,6 @@ int main(char argc, char* argv[]){
 	// will look like 000200010000 (a lot of small bit values)
 	system("gcc ./uses/b_klesmtf.c && ./a.out output.bwt");
 	system("rm output.bwt");
-	printf("Перевели файл в MTF\n");
 
 	system("gcc ./uses/c_hufcompress.c -std=c99 && ./a.out output.mtf");
 	system("rm output.mtf");

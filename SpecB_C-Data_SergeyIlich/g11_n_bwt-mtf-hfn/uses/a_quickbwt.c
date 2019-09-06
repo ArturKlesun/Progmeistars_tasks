@@ -32,7 +32,7 @@ int comp (const void* va,const void* vb){
  * that "quick" part means that it uses built-in qsort() function instead of bucket sort
  */
 int main(char argc, char* argv[]){
-	if (argc != 2) {printf("Извините, но вы неправы\n"); return 66;}
+	if (argc != 2) {printf("Missing input file path for BWT encoding, please specify it as first command line argument\n"); return 66;}
 	byte* input_bytes = malloc(1024*8 * sizeof(byte));
 	unsigned heap_size = 1024*8;
 	unsigned input_size = 0;
@@ -52,20 +52,20 @@ int main(char argc, char* argv[]){
 	byte_count = input_size;
 	begin = input_bytes;
 	end = input_bytes + byte_count;
+	// sorted pointers to each character
 	byte** otmasuk = malloc(byte_count*sizeof(byte*));
 
 	int i;
 	for (i=0; i<byte_count; i++){
 		otmasuk[i] = input_bytes+i;
 	}
-	printf("Начал сортировку (если файл больше мегабайта, она длится больше 30 секунд)\n");
+	printf("BWT sort started (may take more than 30 seconds if input file size is > 1 MiB)\n");
 	qsort(otmasuk, byte_count, sizeof(byte*), comp);
-	printf("Закончил сортировку\n");
-	
+
 	FILE* fw = fopen("output.bwt", "wb");
 	
 	outputandfree(otmasuk, fw);
-	printf("Файл записан!\n");
+	printf("BWT output written to output.bwt!\n");
 	free(input_bytes);
 	free(otmasuk);
 	fclose(fw);

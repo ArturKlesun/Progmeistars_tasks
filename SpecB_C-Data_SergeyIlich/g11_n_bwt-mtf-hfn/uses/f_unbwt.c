@@ -12,7 +12,7 @@ byte* beg_col;
 byte* end_col;
 usg* na4ali;
 
-usg findPlace(byte* end_col[], byte curb, usg splo6nyak);
+usg find_place(byte **otmasuk, byte curb, usg splo6nyak);
 
 void update(usg na4ali[256], byte* otmasuk[]){
 	usg l,r,mid;
@@ -49,7 +49,7 @@ int cmpr(const void* av, const void* bv){
 int main(char argc, char* argv[]){
 	na4ali = malloc(256*(sizeof(usg)));
 	int i;
-	if (argc < 2) {printf("Извините, но вы не правы\n"); return 66;}
+	if (argc < 2) {printf("Missing input file path for BWT decoding, please specify it as first command line argument\n"); return 66;}
 	FILE* fr = fopen(argv[1], "rb");
 	byte_count = 0;
 	usg heapsize = 4096;
@@ -94,10 +94,9 @@ int main(char argc, char* argv[]){
 	byte curb = beg_col[place];
 	
 	for (i = 1; i<byte_count-1; i++) {
-		splo6nyak = 0;
 		p = beg_col+place;
 		splo6nyak = p - (beg_col + na4ali[curb]);
-		place = findPlace(otmasuk, curb, splo6nyak);
+		place = find_place(otmasuk, curb, splo6nyak);
 		curb = orig_row[i] = beg_col[place];
 	}
 	FILE* fw = fopen("unbwtout.dat", "wb");
@@ -109,7 +108,7 @@ int main(char argc, char* argv[]){
 	return 0;
 }
 
-usg findPlace(byte* otmasuk[], byte curb, usg splo6nyak){
+usg find_place(byte **otmasuk, byte curb, usg splo6nyak){
 	usg mid = na4ali[curb] + splo6nyak;
 	return otmasuk[mid] - end_col;
 }

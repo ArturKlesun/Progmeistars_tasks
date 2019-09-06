@@ -27,8 +27,8 @@ struct telement{
 	pelement left;
 	pelement right;
 	int value;
-	char pravoli;
-	int etotchar;
+	char is_right;
+	int character;
 } telement_default = {NULL, NULL, NULL, 0, 0, INT_MAX};
 
 

@@ -54,7 +54,6 @@ int unmtf(FILE* fr){
 	bukvar[255].next = &bukvar[0];
 	bound_p root = bukvar;
 
-    bound_p p = bukvar;
     FILE* fw = fopen("unmtfout.dat", "wb");
 	int b;
     while ( (b = getc(fr))!=EOF ) {
@@ -67,12 +66,10 @@ int unmtf(FILE* fr){
 }
 
 int main(char argc, char* argv[]){
-    if (argc<2) {printf("Извините, но вы неправы\n"); return 66;}
+    if (argc<2) {printf("Missing input file path for MTW decoding, please specify it as first command line argument\n"); return 66;}
     setlocale(LC_CTYPE, "rus");
-    printf("Привет!\n");
     FILE* fr = fopen(argv[1],"rb");
-    printf("Открыли файл\n");
     unmtf(fr);
-    printf("Закончили функцию\n");
+    printf("MTF decoding completed\n");
     return 0;
 }

@@ -69,10 +69,10 @@ int mtf(FILE* fr){
 
 int main(char argc, char* argv[]){
     setlocale(LC_CTYPE, "rus");
-    if (argc<2) {printf("Извините, но вы не правы\n"); return 66;}
+    if (argc<2) {printf("Missing input file path for MTW encoding, please specify it as first command line argument\n"); return 66;}
     FILE* fr = fopen(argv[1],"rb");
-    printf("Открыли файл\n");
+    printf("MTF encoding started\n");
     mtf(fr);
-    printf("Закончили функцию\n");
+    printf("MTF encoding done\n");
     return 0;
 }

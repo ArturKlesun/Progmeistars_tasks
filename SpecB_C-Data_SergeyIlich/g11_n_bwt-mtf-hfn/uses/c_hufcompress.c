@@ -4,10 +4,10 @@ int progress;
 
 int main(char argc, char* argv[]){
 	progress = 0;
-	if (argc<2) {printf("Вы не правы!\n"); return(66);}
+	if (argc<2) {printf("Missing input file path for Huffman compression, please specify it as first command line argument!\n"); return(66);}
 	int start_count = 256;	
-	struct telement *skoka = malloc(sizeof(struct telement) * (start_count*2-1));
-	for (int i = 0; i < start_count*2-1; i++) skoka[i] = telement_default;
+	struct telement *char_weights = malloc(sizeof(struct telement) * (start_count*2-1));
+	for (int i = 0; i < start_count*2-1; i++) char_weights[i] = telement_default;
 // Отсортированный массив указателей
 	pelement* otmasuk = malloc(sizeof(pelement) * (start_count+2));
 	pelement* origin = otmasuk;
@@ -16,37 +16,37 @@ int main(char argc, char* argv[]){
 	otmasuk[start_count] = malloc(sizeof(struct telement));
 	otmasuk[start_count]->value = INT_MAX;
 	for (int i=0; i<start_count; i++) {
-		skoka[i].value = 0;
-		otmasuk[i] = skoka+i;
+		char_weights[i].value = 0;
+		otmasuk[i] = char_weights+i;
 	}
 	
 	pelement pp;
 	int y = 0;
 
-	pp = skoka + start_count*2-1;
+	pp = char_weights + start_count*2-1;
 	do {
 		y++;
 		(pp-y)->left = pp-y*2-1;		(pp-y)->left->parent = pp-y;
 		(pp-y)->right = pp-(y*2);		(pp-y)->right->parent = pp-y;
 	} while (y < 255);
-	skoka[start_count*2-2].parent = NULL;
+	char_weights[start_count*2-2].parent = NULL;
 	// Делаем липовое дерево
 	pelement sp;
 	int sb;
 	for (int c=0; c<256; c++){
-		sp = skoka + start_count*2-2;
+		sp = char_weights + start_count*2-2;
 		sb = c;
 		for (int i = 1; i<=7; i++) {
 			if (sb & 128) sp = sp->right;
 			else sp = sp->left;
 			sb <<= 1;
 		}
-		if (sb) {sp->right = skoka+c; sp->right->parent = sp; sp->right->etotchar=(int)c;}
-		else {sp->left = skoka+c; sp->left->parent = sp; sp->left->etotchar=(int)c;}
+		if (sb) {sp->right = char_weights+c; sp->right->parent = sp; sp->right->character=(int)c;}
+		else {sp->left = char_weights+c; sp->left->parent = sp; sp->left->character=(int)c;}
 	}
 
 	buf_t buf = {0,0};
-	pelement viska = skoka + start_count*2-2;
+	pelement last_weight = char_weights + start_count*2-2;
 	FILE* fr = fopen(argv[1], "rb");
 	FILE* fw = fopen("compressed.klsn", "wb");
 	int b = 0;
@@ -56,18 +56,18 @@ int main(char argc, char* argv[]){
 		b = getc(fr);
 		if (b == EOF) break;
 		
-		skoka[b].value++;
-		sp = skoka+b;
-		sp->pravoli = 2;
+		char_weights[b].value++;
+		sp = char_weights+b;
+		sp->is_right = 2;
 		
-		while (sp != viska) {
-			if (sp->parent->left == sp) sp->parent->pravoli = 0;
-			else sp->parent->pravoli = 1;
+		while (sp != last_weight) {
+			if (sp->parent->left == sp) sp->parent->is_right = 0;
+			else sp->parent->is_right = 1;
 			sp = sp->parent;
 		}
 
-		while (sp->pravoli != 2)			
-			if (sp->pravoli) {
+		while (sp->is_right != 2)
+			if (sp->is_right) {
 				buff_add(&buf,1, fw);  
 				sp = sp->right;
 			} else {
@@ -80,16 +80,16 @@ int main(char argc, char* argv[]){
 		if (progress % 1000000 == 0) {system("clear"); printf("%i мегабайт готово\n", progress/1000000);}
 		somesort(otmasuk,start_count);
 		//отсортить отмасуки...
-		mkbounds(otmasuk, skoka);
+		mkbounds(otmasuk, char_weights);
 		//Обновить древо Хаффмана по отмасукам
 	}
 	while (buf.l) buff_add(&buf, 0, fw);
 	fclose(fr);	
 	fclose(fw);	
-	printf("Сжатие завершено\n");
+	printf("Huffman compression finished\n");
 	
 	free(origin[start_count+1]); // Освобождаем память из под заглушки
 	free(origin);
-	free(skoka);
+	free(char_weights);
 	return 0;
 }
